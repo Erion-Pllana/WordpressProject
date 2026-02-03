@@ -1,0 +1,15 @@
+/*
+Theme Name: WordpressProject
+Theme URI: https://example.com/
+Author: Your Name
+Author URI: https://example.com/
+Description: A minimal multi-page WordPress theme scaffold created for development.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: wordpressproject
+*/
+
+/* Theme stylesheet is intentionally minimal — main styles live in assets/css/main.css */
+
+@import url("assets/css/main.css");
