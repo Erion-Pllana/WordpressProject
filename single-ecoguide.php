@@ -1,18 +1,16 @@
 <?php get_header(); ?>
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-    <div class="wrap main-layout">
+    <div class="wrap main-layout ecoguide-single">
         <div class="content-area">
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 <?php if ( has_post_thumbnail() ) : ?>
                     <?php the_post_thumbnail('large'); ?>
                 <?php endif; ?>
                 <h1><?php the_title(); ?></h1>
-                <div class="meta"><?php the_time('F j, Y'); ?> | <?php the_author(); ?></div>
+                <div class="meta">Topics: <?php echo get_the_term_list( get_the_ID(), 'topic', '', ', ' ); ?></div>
                 <div class="entry-content"><?php the_content(); ?></div>
-                <?php the_tags('<p class="tags">',' ','</p>'); ?>
             </article>
-            <?php if ( comments_open() || get_comments_number() ) : comments_template(); endif; ?>
         </div>
         <?php get_sidebar(); ?>
     </div>

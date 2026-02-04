@@ -1,30 +1,68 @@
 <?php
-/* Front page template */
+/* Front Page Template */
 get_header();
 ?>
 
-<main class="site-main front-page">
-    <section class="hero">
-        <h1>Welcome to <?php bloginfo( 'name' ); ?></h1>
-        <p><?php bloginfo( 'description' ); ?></p>
+<div class="hero">
+    <div class="wrap">
+        <h1>Welcome to EcoSphere</h1>
+        <p>Discover guides, tips and resources to live more sustainably.</p>
+    </div>
+ </div>
+
+<div class="wrap main-layout">
+    <section class="featured-ecoguides">
+        <h2>Latest Eco Guides</h2>
+        <div class="grid">
+            <?php
+            $args = array('post_type'=>'ecoguide','posts_per_page'=>4);
+            $eco = new WP_Query($args);
+            if ($eco->have_posts()) : while ($eco->have_posts()) : $eco->the_post(); ?>
+                <article class="card">
+                    <?php if (has_post_thumbnail()) : ?>
+                        <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('medium'); ?></a>
+                    <?php endif; ?>
+                    <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                    <div class="excerpt"><?php echo wp_trim_words(get_the_excerpt(),18); ?></div>
+                </article>
+            <?php endwhile; wp_reset_postdata(); else: ?>
+                <p><?php _e('No guides found.','ecosphere'); ?></p>
+            <?php endif; ?>
+        </div>
     </section>
 
     <section class="latest-posts">
-        <h2>Latest Posts</h2>
+        <h2>From the Blog</h2>
         <?php
-        $recent = new WP_Query( array( 'posts_per_page' => 3 ) );
-        if ( $recent->have_posts() ) :
-            while ( $recent->have_posts() ) : $recent->the_post(); ?>
-                <article>
-                    <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-                    <?php the_excerpt(); ?>
-                </article>
-            <?php endwhile;
-            wp_reset_postdata();
-        endif;
-        ?>
+        $blog = new WP_Query(array('post_type'=>'post','posts_per_page'=>3));
+        if ($blog->have_posts()) : while ($blog->have_posts()) : $blog->the_post(); ?>
+            <article>
+                <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                <div class="meta"><?php the_time('F j, Y'); ?></div>
+                <div class="excerpt"><?php the_excerpt(); ?></div>
+            </article>
+        <?php endwhile; wp_reset_postdata(); else: ?>
+            <p><?php _e('No blog posts yet.','ecosphere'); ?></p>
+        <?php endif; ?>
     </section>
-</main>
 
-<?php get_sidebar(); ?>
+    <section class="featured-topics">
+        <h2>Explore Topics</h2>
+        <div class="grid">
+            <article class="card"><h3><a href="#">Sustainable Gardening</a></h3><p>Native plants, soil health and biodiversity.</p></article>
+            <article class="card"><h3><a href="#">Climate Action</a></h3><p>Local and global actions to reduce emissions.</p></article>
+            <article class="card"><h3><a href="#">Zero Waste</a></h3><p>Reduce, reuse, recycle, and resourceful living.</p></article>
+            <article class="card"><h3><a href="#">Wildlife Conservation</a></h3><p>Protecting habitats and species in your area.</p></article>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <h2>Stay Updated</h2>
+        <p>Get monthly eco-tips and featured guides.</p>
+        <form class="newsletter-form"><input type="email" placeholder="Your email"><button>Subscribe</button></form>
+    </section>
+
+    <?php get_sidebar(); ?>
+</div>
+
 <?php get_footer(); ?>

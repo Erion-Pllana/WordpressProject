@@ -1,10 +1,13 @@
 <?php get_header(); ?>
 
-<main class="site-main">
-    <h1>Page Not Found</h1>
-    <p>Sorry, but the page you were trying to view does not exist.</p>
-    <?php get_search_form(); ?>
-</main>
+<div class="wrap main-layout">
+    <div class="content-area">
+        <h1>404 - <?php _e('Page Not Found','ecosphere'); ?></h1>
+        <p><?php _e('Sorry, the page you tried to access does not exist. Try searching or return to the homepage.','ecosphere'); ?></p>
+        <?php get_search_form(); ?>
+        <p><a href="<?php echo esc_url(home_url('/')); ?>"><?php _e('Return to homepage','ecosphere'); ?></a></p>
+    </div>
+    <?php get_sidebar(); ?>
+</div>
 
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

@@ -1,46 +1,45 @@
 <?php
-/*
-Template Name: Contact
-*/
-get_header();
+/* Template Name: Contact */
+get_header(); ?>
 
-// Handle basic contact form submission
-if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset( $_POST['wp_contact_nonce'] ) && wp_verify_nonce( $_POST['wp_contact_nonce'], 'wp_contact' ) ) {
-    $name = sanitize_text_field( $_POST['contact_name'] );
-    $email = sanitize_email( $_POST['contact_email'] );
-    $message = sanitize_textarea_field( $_POST['contact_message'] );
+<div class="wrap main-layout">
+    <div class="content-area">
+        <?php while ( have_posts() ) : the_post(); ?>
+            <h1><?php the_title(); ?></h1>
+            <div class="entry-content"><?php the_content(); ?></div>
+        <?php endwhile; ?>
 
-    $to = get_option( 'admin_email' );
-    $subject = sprintf( 'Contact form message from %s', $name ?: $email );
-    $body = "From: $name <$email>\n\n" . $message;
+        <section class="contact-info">
+            <h2>Contact Information</h2>
+            <p>Email: <a href="mailto:hello@ecosphere.example">hello@ecosphere.example</a></p>
+            <p>Phone: +1 (555) 123-4567</p>
+            <p>Address: 123 Green Way, Springfield</p>
+        </section>
 
-    if ( wp_mail( $to, $subject, $body ) ) {
-        $contact_sent = true;
-    } else {
-        $contact_error = true;
-    }
-}
-?>
+        <section class="contact-form">
+            <h2>Send Us a Message</h2>
+            <form method="post" action="<?php echo esc_url( admin_url('admin-post.php') ); ?>">
+                <input type="hidden" name="action" value="ecosphere_contact">
+                <p><label>Name<br><input type="text" name="name" required></label></p>
+                <p><label>Email<br><input type="email" name="email" required></label></p>
+                <p><label>Subject<br><input type="text" name="subject"></label></p>
+                <p><label>Message<br><textarea name="message" rows="6" required></textarea></label></p>
+                <p><button type="submit">Send</button></p>
+            </form>
+        </section>
 
-<main class="site-main">
-    <article>
-        <h1><?php the_title(); ?></h1>
+        <section class="map-placeholder">
+            <h2>Our Location</h2>
+            <div style="background:#e9f6ea;padding:2rem;text-align:center;border:1px solid #dfe9df">Map placeholder — add iframe from Google Maps here.</div>
+        </section>
 
-        <?php if ( ! empty( $contact_sent ) ) : ?>
-            <p>Thank you — your message was sent.</p>
-        <?php elseif ( ! empty( $contact_error ) ) : ?>
-            <p>Sorry — there was an error sending your message.</p>
-        <?php endif; ?>
+        <section class="faq">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item"><strong>How can I contribute?</strong><p>Share guides, volunteer, or support our projects.</p></div>
+            <div class="faq-item"><strong>Do you accept donations?</strong><p>Yes — we work with certified NGOs and will add donation links here.</p></div>
+        </section>
+    </div>
+    <?php get_sidebar(); ?>
+</div>
 
-        <form method="post">
-            <?php wp_nonce_field( 'wp_contact', 'wp_contact_nonce' ); ?>
-            <p><label>Name<br><input type="text" name="contact_name" required></label></p>
-            <p><label>Email<br><input type="email" name="contact_email" required></label></p>
-            <p><label>Message<br><textarea name="contact_message" rows="6" required></textarea></label></p>
-            <p><button type="submit">Send</button></p>
-        </form>
-    </article>
-</main>
-
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>
