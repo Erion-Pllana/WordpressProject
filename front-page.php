@@ -11,6 +11,10 @@ get_header();
  </div>
 
 <div class="wrap main-layout">
+    <section class="about-content card" data-reveal="fade-up">
+        <h2>About this content</h2>
+        <p>This homepage highlights our latest eco-guides and blog posts to help you find practical, evidence-based actions quickly. Use the sections below to explore guides, trending topics, and featured articles curated by our editors.</p>
+    </section>
     <section class="featured-ecoguides">
         <h2>Latest Eco Guides</h2>
         <div class="grid">
@@ -49,10 +53,10 @@ get_header();
     <section class="featured-topics">
         <h2>Explore Topics</h2>
         <div class="grid">
-            <article class="card"><h3><a href="#">Sustainable Gardening</a></h3><p>Native plants, soil health and biodiversity.</p></article>
-            <article class="card"><h3><a href="#">Climate Action</a></h3><p>Local and global actions to reduce emissions.</p></article>
-            <article class="card"><h3><a href="#">Zero Waste</a></h3><p>Reduce, reuse, recycle, and resourceful living.</p></article>
-            <article class="card"><h3><a href="#">Wildlife Conservation</a></h3><p>Protecting habitats and species in your area.</p></article>
+            <article class="card"><h3><a href="<?php echo esc_url( get_permalink( get_page_by_path( 'resources' ) ) ); ?>">Sustainable Gardening</a></h3><p>Native plants, soil health and biodiversity.</p></article>
+            <article class="card"><h3><a href="<?php echo esc_url( get_permalink( get_page_by_path( 'blog' ) ) ); ?>">Climate Action</a></h3><p>Local and global actions to reduce emissions.</p></article>
+            <article class="card"><h3><a href="<?php echo esc_url( get_permalink( get_page_by_path( 'resources' ) ) ); ?>">Zero Waste</a></h3><p>Reduce, reuse, recycle, and resourceful living.</p></article>
+            <article class="card"><h3><a href="<?php echo esc_url( get_permalink( get_page_by_path( 'blog' ) ) ); ?>">Wildlife Conservation</a></h3><p>Protecting habitats and species in your area.</p></article>
         </div>
     </section>
 

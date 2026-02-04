@@ -8,6 +8,11 @@ get_header(); ?>
             <h1><?php the_title(); ?></h1>
             <div class="entry-content"><?php the_content(); ?></div>
 
+            <section class="about-content">
+                <h2>About this content</h2>
+                <p>This page explains who we are and the values behind our work. Read about our mission, the team, and the milestones that shaped our approach to producing community-centered, evidence-based eco-guides.</p>
+            </section>
+
             <section class="mission">
                 <h2>Our Mission</h2>
                 <p>EcoSphere exists to inform, inspire and empower people to make sustainable choices that protect nature and biodiversity. We create practical guides, curate resources, and build a caring community.</p>
@@ -40,6 +45,11 @@ get_header(); ?>
                 <h2>Join Us</h2>
                 <p>Sign up for updates and monthly actions you can take to help nature.</p>
                 <form class="newsletter-form"><input type="email" placeholder="Your email"><button>Subscribe</button></form>
+            </section>
+
+            <section class="about-content">
+                <h2>About this content</h2>
+                <p>The About page shares our purpose, team and history so you can understand the principles behind our guides and editorial choices. If you'd like to collaborate, please reach out via the Contact page.</p>
             </section>
 
         <?php endwhile; ?>

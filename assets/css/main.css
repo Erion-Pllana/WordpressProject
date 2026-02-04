@@ -90,6 +90,16 @@ button:hover,input[type="submit"]:hover{background:var(--accent-light);transform
 .footer-menu a:hover{color:var(--accent-light)}
 .site-info{text-align:center;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.1);color:#aaa}
 
+/* Footer blurb shown on every page */
+.footer-blurb{max-width:900px;margin:0.75rem auto 1rem;color:rgba(255,255,255,0.92);text-align:center;font-size:0.98rem}
+.footer-blurb a{color:var(--accent-light);font-weight:700}
+.footer-blurb p{margin:0}
+
+/* About content block used on key pages */
+.about-content{background:#fff;border-left:4px solid var(--accent);padding:1rem 1.25rem;margin:1rem 0;border-radius:6px}
+.about-content h2{margin-top:0;color:var(--accent)}
+.about-content p{color:var(--muted);margin:0.5rem 0}
+
 /* Tags & Meta */
 .tags{font-size:0.9rem;color:var(--muted);margin-top:1rem}
 .tags a{display:inline-block;background:#f0f8f3;color:var(--accent);padding:0.35rem 0.75rem;border-radius:20px;margin-right:0.5rem;font-size:0.85rem;transition:all 0.2s}
@@ -141,4 +151,54 @@ button:hover,input[type="submit"]:hover{background:var(--accent-light);transform
 .resource-list{list-style:none;padding:0;margin:1rem 0}
 .resource-list li{padding:0.75rem;background:#f9f9f9;margin-bottom:0.5rem;border-left:3px solid var(--accent);border-radius:3px}
 .resource-list a{color:var(--accent);font-weight:500}
+
+/* Hero tweaks and CTA */
+.hero-sub{color:var(--muted);margin:0.5rem 0 1rem;font-size:1rem}
+.button-cta{display:inline-block;background:var(--accent);color:#fff;padding:0.6rem 1rem;border-radius:6px;font-weight:700;text-decoration:none;box-shadow:0 6px 18px rgba(43,138,62,0.12);transition:transform 0.18s ease, box-shadow 0.18s ease}
+.button-cta:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(43,138,62,0.18);background:var(--accent-light)}
+
+/* Featured image subtle lift */
+.featured-image{transition:transform 0.6s cubic-bezier(.2,.9,.2,1);border-radius:8px;overflow:hidden}
+.featured-post:hover .featured-image{transform:scale(1.03) translateY(-4px)}
+
+/* Scroll reveal utilities */
+[data-reveal]{opacity:0;transform:translateY(10px);transition:opacity 560ms cubic-bezier(.2,.9,.2,1),transform 560ms cubic-bezier(.2,.9,.2,1)}
+[data-reveal].is-visible{opacity:1;transform:none}
+
+/* Stagger utility for lists */
+.stagger > *{opacity:0;transform:translateY(10px);transition:opacity 420ms ease, transform 420ms ease}
+.stagger > *.is-visible{opacity:1;transform:none}
+
+/* Accessibility helpers */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+@keyframes fadeUp {from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* Additional animations */
+/* Hero parallax wrapper */
+.hero{position:relative;overflow:hidden}
+.hero .wrap{position:relative;z-index:2;transform:translateZ(0);transition:transform 0.12s linear}
+.hero::before{content:'';position:absolute;left:0;right:0;top:-10%;bottom:-10%;background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(0,0,0,0.02));pointer-events:none;z-index:1}
+
+/* Card tilt on mousemove */
+.card{transform-style:preserve-3d;will-change:transform}
+.card.tilt{transition:transform 160ms cubic-bezier(.2,.9,.2,1)}
+
+/* Tag cloud float */
+.tag-cloud a{display:inline-block;animation:floaty 6s ease-in-out infinite;transform-origin:center}
+.tag-cloud a:nth-child(3n){animation-duration:5.2s}
+.tag-cloud a:nth-child(4n){animation-duration:6.8s}
+
+@keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+
+/* Thrifty image reveal scaling */
+.thumb img{transition:transform 520ms cubic-bezier(.2,.9,.2,1),filter 360ms}
+.thumb img.is-visible{transform:scale(1);filter:brightness(1)}
+.thumb img{transform:scale(0.98);filter:brightness(0.98)}
+
+/* Slight entrance for pagination */
+.pagination a{transition:transform 260ms cubic-bezier(.2,.9,.2,1),box-shadow 180ms}
+.pagination a:hover{transform:translateY(-4px)}
+
+
 

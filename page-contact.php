@@ -9,11 +9,17 @@ get_header(); ?>
             <div class="entry-content"><?php the_content(); ?></div>
         <?php endwhile; ?>
 
+        <section class="about-content">
+            <h2>About this content</h2>
+            <p>This page helps you connect with EcoSphere — whether you have a contribution, partnership idea, or a question about our guides. Use the contact form or the details below to reach the right person quickly.</p>
+        </section>
+
         <section class="contact-info">
             <h2>Contact Information</h2>
-            <p>Email: <a href="mailto:hello@ecosphere.example">hello@ecosphere.example</a></p>
+            <p>Email: <a href="mailto:hello@ecosphere.org">hello@ecosphere.org</a></p>
             <p>Phone: +1 (555) 123-4567</p>
             <p>Address: 123 Green Way, Springfield</p>
+            <p>Hours: Mon–Fri, 9am–5pm local time</p>
         </section>
 
         <section class="contact-form">
@@ -30,7 +36,10 @@ get_header(); ?>
 
         <section class="map-placeholder">
             <h2>Our Location</h2>
-            <div style="background:#e9f6ea;padding:2rem;text-align:center;border:1px solid #dfe9df">Map placeholder — add iframe from Google Maps here.</div>
+            <p class="muted">Map below is a general location. Click to open in Google Maps.</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=123+Green+Way+Springfield" target="_blank" rel="noopener">
+                <img src="https://placehold.co/800x300?text=Map+Preview" alt="Map preview for EcoSphere location" style="width:100%;border:1px solid #dfe9df;border-radius:6px;">
+            </a>
         </section>
 
         <section class="faq">
